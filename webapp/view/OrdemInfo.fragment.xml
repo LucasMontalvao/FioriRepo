@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Informações" resizable="false" draggable="false">
+		<content>
+			<f:SimpleForm maxContainerCols="2" id="sfInfo" layout="ResponsiveGridLayout" labelSpanXL="3" minWidth="1024" labelSpanL="3" labelSpanM="3"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false" width="100%">
+				<f:content>
+					<Title text="Ordem: {Order/OrderID}"/>
+					<Label text="Cliente ID" design="Bold"/>
+					<Text text="{Order/CustomerID}"/>
+					<Label text="Nome Cliente" design="Bold"/>
+					<Text text="{Order/ShipName}"/>
+					<Label text="Nome Endereço" design="Bold"/>
+					<Text text="{Order/ShipAddress}"/>
+					<Label text="Status" design="Bold"/>
+					<ObjectStatus text="{= ${Order/ShipVia} === 1 ? 'Enviado' : ${Order/ShipVia} === 2 ? 'Processando' : 'Entregue'}"
+						state="{= ${Order/ShipVia} === 1 ? 'Error' : ${Order/ShipVia} === 2 ? 'Warning' : 'Success'}"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<buttons>
+			<Button text="Fechar" press="onClose"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
